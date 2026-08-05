@@ -1,6 +1,13 @@
 [package]
 name = "desktop"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+eframe = "0.27"
+egui_extras = "0.27"
+shared-core = { path = "../shared-core" }
+fast_qr = "0.11"
+rfd = "0.14"
+image = "0.25"
+crossbeam-channel = "0.5"
