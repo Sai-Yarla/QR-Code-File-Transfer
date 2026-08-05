@@ -1,0 +1,9 @@
+/target
+/desktop/target
+/shared-core/target
+/android/.gradle
+/android/build
+/android/app/build
+/android/local.properties
+*.iml
+.idea

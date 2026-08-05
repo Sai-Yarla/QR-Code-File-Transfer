@@ -37,7 +37,10 @@ impl QrDecoder {
             }
             Frame::Data(d) => {
                 if let Some(ref mut decoder) = self.decoder {
-                    let packet = EncodingPacket::new(d.encoding_symbol_id, d.payload);
+                    // RaptorQ PayloadId requires source_block_number (0) and encoding_symbol_id
+                    use raptorq::PayloadId;
+                    let payload_id = PayloadId::new(0, d.encoding_symbol_id);
+                    let packet = EncodingPacket::new(payload_id, d.payload);
                     self.received_symbols += 1;
                     
                     if let Some(decoded_data) = decoder.decode(packet) {

@@ -6,7 +6,6 @@ use shared_core::encoder::QrEncoder;
 use shared_core::protocol::Frame;
 use std::fs;
 use std::path::PathBuf;
-use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
 
@@ -188,7 +187,7 @@ fn worker_thread(rx: Receiver<WorkerCommand>, tx: Sender<egui::ColorImage>) {
                 
                 for y in 0..qr.size {
                     for x in 0..qr.size {
-                        if qr.get_module(x, y) {
+                        if qr.data[y * qr.size + x].value() {
                             // fill an 8x8 block
                             for dy in 0..module_size {
                                 for dx in 0..module_size {

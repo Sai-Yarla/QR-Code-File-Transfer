@@ -4,6 +4,12 @@ A high-speed, air-gapped file transfer system using dynamically generated QR cod
 
 ## Features
 
+![Desktop Transfer](assets/desktop.png)
+*Desktop application displaying the high-density QR code sequence*
+
+![Android Scanner](assets/android.png)
+*Android application scanning the QR codes and rebuilding the file*
+
 - **Robust Error Correction**: Uses RaptorQ (Fountain Codes) to ensure successful reconstruction even if frames are skipped, duplicated, or scanned out of order.
 - **Compression**: Payloads are compressed with Zstandard prior to encoding to minimize data size.
 - **Cross-platform Native Core**: Core logic (compression, framing, encoding, decoding) is written in Rust (`shared-core`) and used natively by both the Desktop and Android apps.

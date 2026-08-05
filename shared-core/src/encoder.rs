@@ -41,7 +41,7 @@ impl QrEncoder {
             uncompressed_size,
             compressed_size,
             compression_type: 1, // Zstd
-            total_symbols: oti.transfer_length() / (symbol_size as u32), // simplified
+            total_symbols: (oti.transfer_length() / (symbol_size as u64)) as u32,
             symbol_size,
             sha256_hash,
             filename,
@@ -65,7 +65,7 @@ impl QrEncoder {
         
         let frame = Frame::Data(DataFrame {
             transfer_id: self.metadata.transfer_id,
-            encoding_symbol_id: packet.payload_id(),
+            encoding_symbol_id: packet.payload_id().encoding_symbol_id(),
             payload: packet.data().to_vec(),
         });
         
